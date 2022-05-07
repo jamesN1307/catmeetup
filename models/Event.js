@@ -6,22 +6,22 @@ class Event extends Model {}
 
 Event.init({
     // add properites here, ex:
-    Eventname: {
+    name: {
          type: DataTypes.STRING,
          allowNull:false,
          unique:true
     },
-    Event_Time: {
+    time: {
          type: DataTypes.STRING,
          allowNull:false,
          unique:true
     },
-    Event_Date: {
+    date: {
          type: DataTypes.STRING,
          allowNull:false,
          unique:true
     },
-    Event_Location: {
+    location: {
          type: DataTypes.STRING,
          allowNull:false,
          unique:true
