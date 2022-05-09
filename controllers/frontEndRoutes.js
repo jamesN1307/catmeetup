@@ -10,6 +10,9 @@ router.get("/",(req,res)=>{
         console.log(hbsevents)
         const loggedIn = req.session.user?true:false
         res.render("home",{events:hbsevents,loggedIn,username:req.session.user?.username})
+    }).catch(err=>{
+        console.log(err);
+        res.json(err);
     })
 })
 
@@ -18,6 +21,12 @@ router.get("/login",(req,res)=>{
         return res.redirect("/profile")
     }
     res.render("login")
+})
+router.get("/signup",(req,res)=>{
+    if(req.session.user){
+        return res.redirect("/profile")
+    }
+    res.render("signup")
 })
 
 router.get("/profile",(req,res)=>{

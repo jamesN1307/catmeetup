@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const {User,Event,Cat} = require("../models/");
+const {User,Event,Cat} = require("../../models");
 const bcrypt  = require("bcrypt");
 
 //find all
@@ -33,7 +33,9 @@ router.get("/:id", (req, res) => {
 });
 
 //create user
+// /api/users/
 router.post("/", (req, res) => {
+  console.log(req.body)
   User.create(req.body)
     .then(newUser => {
       req.session.user = {
