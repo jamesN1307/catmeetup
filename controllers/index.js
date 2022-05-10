@@ -12,11 +12,11 @@ router.get("/showsessions",(req,res)=>{
     res.json(req.session)
 })
 
-router.get("/secretclub",(req,res)=>{
-    if(!req.session.user){
-        return res.status(401).json({msg:"ya gotta login to join the club!"})
-    }
-    res.json({msg:`welcome to the club ${req.session.user.username}`})
-})
+// router.get("/secretclub",(req,res)=>{
+//     if(!req.session.user){
+//         return res.status(401).json({msg:"ya gotta login to join the club!"})
+//     }
+//     res.json({msg:`welcome to the club ${req.session.user.username}`})
+// })
 
 module.exports = router;
