@@ -47,7 +47,7 @@ router.get("/event",(req,res)=>{
         //console.log("=======")
        // console.log(hbsData);
         hbsData.loggedIn = req.session.user?true:false
-        res.render("home",hbsData)
+        res.render("event",hbsData)
     })
 })
 //=================

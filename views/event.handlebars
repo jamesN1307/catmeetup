@@ -1,5 +1,4 @@
-<h1>Welcome back {{username}}</h1>
-<h2>All your blogs:</h2>
+<h1>Want to create an event {{user.username}}?</h1>
 <form action="" id="eventLog">
     <input type="text" id="name" placeholder="name">
     <textarea id="location" cols="30" rows="10" placeholder="location"></textarea>
@@ -7,11 +6,14 @@
     <textarea id="time" cols="30" rows="10" placeholder="time"></textarea>
     <button>Submit</button>
 </form>
-{{#each hbsData}}
-    <h3>{{name}}</h3>
-    <p>{{location}}</p>
-    <p>{{date}}</p>
-    <p>{{time}}</p>
+<div>
+<h3>all the events</h3>
+{{#each hbsEvents as |event|}}
+    <h3>{{event.name}}</h3>
+    <p>{{event.location}}</p>
+    <p>{{event.date}}</p>
+    <p>{{event.time}}</p>
     <hr>
 {{/each}}
+</div>
  <script src="./assets/js/event.js"></script>
