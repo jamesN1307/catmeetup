@@ -1,1 +1,18 @@
-<h1>Hi!</h1>
+<h1>Welcome back {{username}}</h1>
+<h2>All your blogs:</h2>
+<form action="" id="eventLog">
+    <input type="text" id="name" placeholder="title">
+    <textarea id="location" cols="30" rows="10"></textarea>
+    <textarea id="date" cols="30" rows="10"></textarea>
+    <textarea id="time" cols="30" rows="10"></textarea>
+    <button>Submit</button>
+</form>
+{{#each Events}}
+    <h3>{{name}}</h3>
+    <p>{{location}}</p>
+    <p>{{date}}</p>
+    <p>{{time}}</p>
+    <hr>
+{{/each}}
+ <script src="./assets/js/event.js"></script>
+
