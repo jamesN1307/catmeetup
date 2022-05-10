@@ -28,6 +28,12 @@ router.get("/signup",(req,res)=>{
     }
     res.render("signup")
 })
+router.get("/event",(req,res)=>{
+    if(req.session.user){
+        return res.redirect("/profile")
+    }
+    res.render("event")
+})
 
 router.get("/profile",(req,res)=>{
     if(!req.session.user){
