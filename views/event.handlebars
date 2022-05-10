@@ -1,6 +1,13 @@
-<h1>Find Events Near You</h1>
+<h1>Welcome back {{username}}</h1>
 <h2>All your blogs:</h2>
-{{#each Events}}
+<form action="" id="eventLog">
+    <input type="text" id="name" placeholder="name">
+    <textarea id="location" cols="30" rows="10" placeholder="location"></textarea>
+    <textarea id="date" cols="30" rows="10" placeholder="date"></textarea>
+    <textarea id="time" cols="30" rows="10" placeholder="time"></textarea>
+    <button>Submit</button>
+</form>
+{{#each hbsData}}
     <h3>{{name}}</h3>
     <p>{{location}}</p>
     <p>{{date}}</p>
@@ -8,16 +15,3 @@
     <hr>
 {{/each}}
  <script src="./assets/js/event.js"></script>
-
-
-
-
-
-
-{{!-- <form action="" id="eventLog">
-    <input type="text" id="name" placeholder="title">
-    <textarea id="location" cols="30" rows="10"></textarea>
-    <textarea id="date" cols="30" rows="10"></textarea>
-    <textarea id="time" cols="30" rows="10"></textarea>
-    <button>Submit</button>
-</form> --}}

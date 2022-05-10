@@ -74,7 +74,7 @@ router.delete("/:id", (req, res) => {
     res.json(delEvent);
   })
   .catch(err => {
-    console.log(err);
+    //console.log(err);
     res.status(500).json({ msg: "an error occured", err });
   });
 });

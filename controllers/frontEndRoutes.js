@@ -4,12 +4,12 @@ const {User,Event,Cat} = require('../models');
 
 router.get("/",(req,res)=>{
     Event.findAll().then(events=>{
-        console.log(events)
-        const hbsevents = events.map(event=>event.get({plain:true}))
-        console.log("==========")
-        console.log(hbsevents)
+        //console.log(events)
+        const hbsEvents = events.map(event=>event.get({plain:true}))
+        //console.log("==========")
+        console.log(hbsEvents)
         const loggedIn = req.session.user?true:false
-        res.render("home",{events:hbsevents,loggedIn,username:req.session.user?.username})
+        res.render("home",{hbsEvents})
     }).catch(err=>{
         console.log(err);
         res.json(err);
@@ -28,13 +28,29 @@ router.get("/signup",(req,res)=>{
     }
     res.render("signup")
 })
+// router.get("/event",(req,res)=>{
+//     if(req.session.user){
+//         return res.redirect("/profile")
+//     }
+//     res.render("event")
+// })
+//=============
 router.get("/event",(req,res)=>{
-    if(req.session.user){
-        return res.redirect("/profile")
+    if(!req.session.user){
+        return res.redirect("/login")
     }
-    res.render("event")
+    Event.findByPk(req.session.user.id,{
+        include:[User]
+    }).then(userData=>{
+        //console.log(userData);
+        const hbsData = userData.get({plain:true})
+        //console.log("=======")
+       // console.log(hbsData);
+        hbsData.loggedIn = req.session.user?true:false
+        res.render("home",hbsData)
+    })
 })
-
+//=================
 router.get("/profile",(req,res)=>{
     if(!req.session.user){
         return res.redirect("/login")
@@ -42,10 +58,10 @@ router.get("/profile",(req,res)=>{
     User.findByPk(req.session.user.id,{
         include:[Event]
     }).then(userData=>{
-        console.log(userData);
+       // console.log(userData);
         const hbsData = userData.get({plain:true})
-        console.log("=======")
-        console.log(hbsData);
+        //console.log("=======")
+        //console.log(hbsData);
         hbsData.loggedIn = req.session.user?true:false
         res.render("profile",hbsData)
     })
