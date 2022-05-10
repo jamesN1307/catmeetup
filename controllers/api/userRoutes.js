@@ -4,6 +4,7 @@ const {User,Event,Cat} = require("../../models");
 const bcrypt  = require("bcrypt");
 
 //find all
+// api/user
 router.get("/", (req, res) => {
   User.findAll({
     include:[Event,Cat]
